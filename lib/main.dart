@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget {
         providers: [
 
           BlocProvider(
-            create: (BuildContext context) =>ShopHomeCubit()..getHomeData()..getCategoriesData()..GetFav()..GetUserData(),
+            create: (BuildContext context) =>ShopHomeCubit()..getHomeData()..getCategoriesData()..GetFav()..GetUserData()..getSearchData('asasg'),
           ),
         ],
 

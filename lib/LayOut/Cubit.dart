@@ -86,22 +86,23 @@ class ShopHomeCubit extends Cubit<ShopStates> {
   void getSearchData(String name){
     emit(ShopLoadingSearchDataState());
 
-    DioHelper.GetData(
-        url: 'products/search',
+    DioHelper.PostData(
+        url: "products/search",
+
+
         query: {
-          'text': name
+          'text': 'iphone',
+
         },
-        token: token
-    ).then((value)  {
-
-      searchModel = SearchModel.fromJson(value.data);
-      print(searchModel!.status);
-      emit(ShopSuccessSearchDataState());
-
+      token: token,
+        ).then((value){
+          searchModel = SearchModel.fromJson(value.data);
+          print(searchModel!.status);
+          emit(ShopSuccessSearchDataState());
     }).catchError((error){
-      print('iam here');
+      print('>>>>>>>>>>>>');
       print(error.toString());
-      emit(ShopErrorSearchDataState(error.toString()));
+      emit(ShopErrorSearchDataState(error));
     });
 
   }
