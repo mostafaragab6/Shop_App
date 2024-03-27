@@ -28,6 +28,17 @@ class ShopErrorGetCategoriesDataState extends ShopStates {
   String error ;
   ShopErrorGetCategoriesDataState(this.error);
 }
+
+class ShopLoadingSearchDataState extends ShopStates {}
+
+class ShopSuccessSearchDataState extends ShopStates {}
+
+class ShopErrorSearchDataState extends ShopStates {
+  String error ;
+  ShopErrorSearchDataState(this.error);
+}
+
+
 class ShopSelectFavState extends ShopStates {}
 class ShopSuccessSelectFavState extends ShopStates {
   final FavModel model;

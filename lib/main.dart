@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,26 +8,13 @@ import 'LayOut/Cubit.dart';
 import 'LayOut/ShopLayOut.dart';
 import 'Modules/Login/LoginScreen.dart';
 import 'Modules/OnBoardingScreen.dart';
+import 'Modules/SearchScreen.dart';
 import 'Modules/Shapes.dart';
 import 'Shared/Network/CasheHelper.dart';
 import 'Shared/Network/DioHelper.dart';
 void main()async {
 
-  // AwesomeNotifications().initialize(
-  //     null,
-  //     [
-  //       NotificationChannel(
-  //           channelKey: 'basic_channel',
-  //           channelName: 'basic_notification',
-  //           channelDescription: 'channelDescription')
-  //     ],
-  //     debug: true
-  // );
-  // AwesomeNotifications().isNotificationAllowed().then((isAllowed) {
-  //   if (!isAllowed) {
-  //     AwesomeNotifications().requestPermissionToSendNotifications();
-  //   }
-  // });
+
   WidgetsFlutterBinding.ensureInitialized();
   DioHelper.init();
   await CacheHelper.init();
@@ -154,7 +139,8 @@ class MyApp extends StatelessWidget {
 
               themeMode:  ThemeMode.light ,
               debugShowCheckedModeBanner: false,
-                home: token !=null? ShopLayout():ShopLogInScreen()
+                home: Search1Screen()
+                // token !=null? ShopLayout():ShopLogInScreen()
           ),
           listener: (BuildContext context, ShopStates state) {  },
 

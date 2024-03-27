@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_project/Model/LogOutModel.dart';
 import 'package:shop_project/Model/LoginModel.dart';
 import 'package:shop_project/Model/RegisterModel.dart';
+import 'package:shop_project/Model/SearchModel.dart';
 import 'package:shop_project/Modules/Profile.dart';
 
 import '../Const/Components.dart';
@@ -77,6 +78,30 @@ class ShopHomeCubit extends Cubit<ShopStates> {
     }).catchError((error){
       print(error.toString());
       emit(ShopErrorGetDataState(error.toString()));
+    });
+
+  }
+
+ SearchModel? searchModel;
+  void getSearchData(String name){
+    emit(ShopLoadingSearchDataState());
+
+    DioHelper.GetData(
+        url: 'products/search',
+        query: {
+          'text': name
+        },
+        token: token
+    ).then((value)  {
+
+      searchModel = SearchModel.fromJson(value.data);
+      print(searchModel!.status);
+      emit(ShopSuccessSearchDataState());
+
+    }).catchError((error){
+      print('iam here');
+      print(error.toString());
+      emit(ShopErrorSearchDataState(error.toString()));
     });
 
   }
