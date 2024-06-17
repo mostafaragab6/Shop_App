@@ -18,6 +18,21 @@ class ShopLayout extends StatelessWidget {
       builder: (BuildContext context, ShopStates state) {
         var cubit = ShopHomeCubit.Get(context);
         return Scaffold(
+          drawer: MyDrawer(),
+          appBar: AppBar(
+
+            title: Text('Shop App',style: TextStyle(
+              fontSize: 25.0,
+            ),),
+            actions: [
+              Padding(
+                padding: const EdgeInsetsDirectional.only(end: 15.0),
+                child: IconButton( onPressed: () {
+                  navigatTo(context, Search1Screen());
+                }, icon: Image.asset('icons/loupe.png',width: 25.0,height: 25.0,)),
+              )
+            ],
+          ),
           backgroundColor: MaterialColor(0xFFF5F1E5, {}),
 
           body:Stack(

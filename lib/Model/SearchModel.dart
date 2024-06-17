@@ -4,18 +4,18 @@ class SearchModel{
   Data? data;
   SearchModel.fromJson(Map<String,dynamic>json){
     status = json['status'];
-    data = json['data'] != null ? Data.fromJson(json['data']) : null;
+    data = Data.fromJson(json['data']) ;
   }
 
 }
 
 class Data{
 
-  List<ProdData>? prodData;
+  List<ProdData> prodData=[];
 
   Data.fromJson(Map<String,dynamic> json){
     json['data'].forEach((element){
-      prodData!.add(ProdData.fromJson(element));
+      prodData.add(ProdData.fromJson(element));
     });
   }
 }
@@ -26,7 +26,7 @@ class ProdData{
   String? image;
   String? name;
   String? description;
-  List<String>? images;
+  List<String> images=[];
   bool? in_cart;
   bool? in_favorites;
 
@@ -37,7 +37,7 @@ class ProdData{
     name = json['name'];
     description = json['description'];
     json['images'].forEach((element){
-      images!.add(element);
+      images.add(element);
     });
     in_cart=json['in_cart'];
     in_favorites=json['in_favorites'];

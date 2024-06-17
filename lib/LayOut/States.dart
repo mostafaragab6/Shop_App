@@ -1,6 +1,7 @@
 import 'package:shop_project/Model/FavouritesGetModel.dart';
 import 'package:shop_project/Model/RegisterModel.dart';
 
+import '../Model/AddCartModel.dart';
 import '../Model/FavModel.dart';
 import '../Model/LogOutModel.dart';
 import '../Model/LoginModel.dart';
@@ -36,6 +37,15 @@ class ShopSuccessSearchDataState extends ShopStates {}
 class ShopErrorSearchDataState extends ShopStates {
   String error ;
   ShopErrorSearchDataState(this.error);
+}
+
+class ShopLoadingCartDataState extends ShopStates {}
+
+class ShopSuccessCartDataState extends ShopStates {}
+
+class ShopErrorCartDataState extends ShopStates {
+  String error ;
+  ShopErrorCartDataState(this.error);
 }
 
 
@@ -90,6 +100,19 @@ class ShopErrorLogOutState extends ShopStates {
   ShopErrorLogOutState(this.error);
 }
 
+class ShopLoadingAddCartState extends ShopStates {}
+
+class ShopSuccessAddCartState extends ShopStates {
+  final AddCartModel cartData;
+
+  ShopSuccessAddCartState(this.cartData);
+}
+
+class ShopErrorAddCartState extends ShopStates {
+  String error ;
+  ShopErrorAddCartState(this.error);
+}
+
 class ShopLoadingUpdateState extends ShopStates {}
 
 class ShopSuccessUpdateState extends ShopStates {
@@ -104,3 +127,4 @@ class ShopErrorUpdateState extends ShopStates {
 }
 
 class ShopChangePassState extends ShopStates {}
+class ShopGetImageState extends ShopStates {}

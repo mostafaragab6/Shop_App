@@ -80,7 +80,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     }
                   },
                   physics: BouncingScrollPhysics(),
-                  itemBuilder: (context , index) => BuildItem(boarding[index]),itemCount: boarding.length,)),
+                  itemBuilder: (context , index) => BuildItem(boarding[index]),
+                  itemCount: boarding.length,
+                )
+            ),
             SizedBox(
               height: 40.0,
             ),

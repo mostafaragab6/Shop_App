@@ -1,4 +1,5 @@
 
+import 'package:another_flushbar/flushbar.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -165,8 +166,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
         }, listener: (BuildContext context, ShopRegisterStates state) {
         if(state is ShopRegisterSuccessState){
           if(state.registerModel.status!){
-            print(state.registerModel.message);
-            print(state.registerModel.Info!.token);
+              Flushbar(
+                  padding: EdgeInsets.all(30.0),
+                  backgroundColor: Colors.green.withOpacity(.5),
+                  icon: Icon(Icons.check_circle_outline, color: Colors.white,),
+                  margin: EdgeInsets.only(top: 30.0, right: 10.0, left: 10.0),
+                  message: '${state.registerModel.message}',
+                  duration: Duration(seconds: 3),
+                  flushbarPosition: FlushbarPosition.TOP,
+                  borderRadius: BorderRadius.circular(20.0),
+                  barBlur: 15,
+                  dismissDirection: FlushbarDismissDirection.HORIZONTAL,
+                )..show(context);
+
 
             CacheHelper.saveData(
                 key: 'token',

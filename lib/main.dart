@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget {
         providers: [
 
           BlocProvider(
-            create: (BuildContext context) =>ShopHomeCubit()..getHomeData()..getCategoriesData()..GetFav()..GetUserData()..getSearchData('asasg'),
+            create: (BuildContext context) =>ShopHomeCubit()..getHomeData()..getCategoriesData()..GetFav()..GetUserData()..getCartData(),
           ),
         ],
 
@@ -82,6 +82,8 @@ class MyApp extends StatelessWidget {
                   ),
                   scaffoldBackgroundColor: Colors.white,
                   appBarTheme: AppBarTheme(
+
+
                     iconTheme: IconThemeData(
                         color: Colors.black
                     ),
@@ -90,7 +92,7 @@ class MyApp extends StatelessWidget {
                         statusBarColor: MaterialColor(0xFFF5F1E5, {}),
                         statusBarIconBrightness: Brightness.dark
                     ),
-                    backgroundColor: Colors.white,
+                    backgroundColor: MaterialColor(0xFFF5F1E5, {}),
                     titleTextStyle: TextStyle(color: Colors.black ,fontSize: 45.0),
                     //titleSpacing: 25.0
                   ),
@@ -100,46 +102,11 @@ class MyApp extends StatelessWidget {
                     unselectedItemColor: Colors.grey[400]
                   )
               ),
-              darkTheme: ThemeData(
-                  fontFamily: 'newFont',
-                  iconTheme: IconThemeData(
-                      color: Colors.white70
-                  ),
 
-                  bottomNavigationBarTheme: BottomNavigationBarThemeData(
-                      type: BottomNavigationBarType.fixed,
-                      selectedItemColor: Colors.teal[700],
-                      unselectedItemColor: Colors.grey,
-                      backgroundColor: Colors.black,
-                      elevation: 20.0
-                  ),
-                  scaffoldBackgroundColor: Colors.black,
-                  primarySwatch: Colors.grey,
-                  appBarTheme: AppBarTheme(
-
-                      backgroundColor: Colors.black,
-                      systemOverlayStyle: SystemUiOverlayStyle(
-                          statusBarColor: Colors.black,
-                          statusBarIconBrightness: Brightness.light
-                      )
-                  ),
-                  cardTheme: CardTheme(
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-                      color: Colors.grey[700]
-                  ),
-
-                  textTheme: TextTheme(
-                    bodyText1: TextStyle(
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white70
-                    ),
-                  )
-              ),
 
               themeMode:  ThemeMode.light ,
               debugShowCheckedModeBanner: false,
-                home: Search1Screen()
+                home: ShopLayout()
                 // token !=null? ShopLayout():ShopLogInScreen()
           ),
           listener: (BuildContext context, ShopStates state) {  },

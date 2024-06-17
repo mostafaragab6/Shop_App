@@ -1,3 +1,4 @@
+import 'package:another_flushbar/flushbar.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -109,19 +110,20 @@ class ShopLogInScreen extends StatelessWidget {
         listener: (BuildContext context, ShopLoginStates state) {
           if(state is ShopLoginInSuccessState){
             if(state.loginModel.status){
-              print(state.loginModel.message);
-              print(state.loginModel.data!.token);
-              print(state.loginModel.data!.name);
 
-              Fluttertoast.showToast(
-                  msg: state.loginModel.message,
-                  toastLength: Toast.LENGTH_LONG,
-                  gravity: ToastGravity.BOTTOM,
-                  timeInSecForIosWeb: 5,
-                  backgroundColor: Colors.green,
-                  textColor: Colors.white,
-                  fontSize: 16.0
-              );
+                  Flushbar(
+                    padding: EdgeInsets.all(30.0),
+                    backgroundColor: Colors.green.withOpacity(.5),
+                    icon: Icon(Icons.check_circle_outline, color: Colors.white,),
+                    margin: EdgeInsets.only(top: 30.0, right: 10.0, left: 10.0),
+                    message: '${state.loginModel.message}',
+                    duration: Duration(seconds: 3),
+                    flushbarPosition: FlushbarPosition.TOP,
+                    borderRadius: BorderRadius.circular(20.0),
+                    barBlur: 15,
+                    dismissDirection: FlushbarDismissDirection.HORIZONTAL,
+                  )..show(context);
+
 
               CacheHelper.saveData(key: 'token', value: state.loginModel.data!.token).then((value) {
                 token = state.loginModel.data!.token;
@@ -136,16 +138,20 @@ class ShopLogInScreen extends StatelessWidget {
 
 
             }else {
-              print(state.loginModel.message);
-              Fluttertoast.showToast(
-                  msg: state.loginModel.message,
-                  toastLength: Toast.LENGTH_LONG,
-                  gravity: ToastGravity.BOTTOM,
-                  timeInSecForIosWeb: 5,
-                  backgroundColor: Colors.red,
-                  textColor: Colors.white,
-                  fontSize: 16.0
-              );
+
+                  Flushbar(
+                    padding: EdgeInsets.all(30.0),
+                    backgroundColor: Colors.green.withOpacity(.5),
+                    icon: Icon(Icons.check_circle_outline, color: Colors.white,),
+                    margin: EdgeInsets.only(top: 30.0, right: 10.0, left: 10.0),
+                    message: '${state.loginModel.message}',
+                    duration: Duration(seconds: 3),
+                    flushbarPosition: FlushbarPosition.TOP,
+                    borderRadius: BorderRadius.circular(20.0),
+                    barBlur: 15,
+                    dismissDirection: FlushbarDismissDirection.HORIZONTAL,
+                  )..show(context);
+
 
             }
           }
